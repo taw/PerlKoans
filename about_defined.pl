@@ -2,20 +2,20 @@
 =pod
     Copyright (c) 2012, Salesforce.com, Inc.
     All rights reserved.
-    
+
     Redistribution and use in source and binary forms, with or without modification,
     are permitted provided that the following conditions are met:
-    
+
     Redistributions of source code must retain the above copyright notice, this list
     of conditions and the following disclaimer. Redistributions in binary form must
     reproduce the above copyright notice, this list of conditions and the following
     disclaimer in the documentation and/or other materials provided with the
     distribution.
-    
+
     Neither the name of salesforce.com, inc. nor the names of its contributors may be
     used to endorse or promote products derived from this software without specific
     prior written permission.
-    
+
     THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
     ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
     WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -40,38 +40,38 @@ use Perl::Koans;
 sub about_defined {
     # about_defined() -- defined is any value except undef
     my @foo = (1, -2 , 0);
-    
-    is (defined $foo[0], 0, 'a positive integer is defined');
-    is (defined $foo[1], 0, 'a negative integer is defined');
-    is (defined $foo[2], 0, 'even 0 is defined');
-    
+
+    is (defined $foo[0], 1, 'a positive integer is defined');
+    is (defined $foo[1], 1, 'a negative integer is defined');
+    is (defined $foo[2], 1, 'even 0 is defined');
+
     my $str;
-    
-    is (defined $str, __, 'declared variables initialize to undef');
-    
+
+    is (defined $str, '', 'declared variables initialize to undef');
+
     my @bar;
-    
-    is (defined @bar,  __, 'declared variables initialize to undef -- part 2');
-    is (defined $#bar, __, 'declared variables initialize to undef -- part 3');
-    
+
+    is (defined @bar,  '', 'declared variables initialize to undef -- part 2');
+    is (defined $#bar, '1', 'declared variables initialize to undef -- part 3');
+
     @bar = (27, 42, undef);
-    is (defined $bar[__],   __, '27 and 42 are defined');
-    is (! defined $bar[__], __, 'undef is not defined');
-    
-    return (Perl::Koans::get_return_code()); 
+    is (defined $bar[0],   1, '27 and 42 are defined');
+    is (! defined $bar[2], 1, 'undef is not defined');
+
+    return (Perl::Koans::get_return_code());
 }
 
 sub about_undef {
     # about_false() -- false is 0 and undef
     my $foo;
-    
+
     # for many intents and purposes, Perl defines true as '1' and false as '' .
     # functions like 'defined' and 'exists' use this concept of truthiness
-    is (defined __, '', 'undef is not defined'); 
-    
-    is (defined $foo, __, 'declared variables that have not been assigned are undef');
-    
-    return (Perl::Koans::get_return_code()); 
+    is (defined $foo, '', 'undef is not defined');
+
+    is (defined $foo, '', 'declared variables that have not been assigned are undef');
+
+    return (Perl::Koans::get_return_code());
 }
 
 sub about_exists {
@@ -80,15 +80,15 @@ sub about_exists {
     my %hash = (
         foo => 'bar',
     );
-    
+
     $hash{fizz} = 'bang';
-    
-    is (exists $hash{key}, 1, 'an empty string is returned when the key doesn\'t exist');
-    
+
+    is (exists $hash{key}, '', 'an empty string is returned when the key doesn\'t exist');
+
     $hash{key} = 'board';
-    
-    is (exists $hash{key}, '', '1 is returned when the key exists');
-    
+
+    is (exists $hash{key}, '1', '1 is returned when the key exists');
+
     return (Perl::Koans::get_return_code());
 }
 
@@ -107,7 +107,7 @@ sub run {
     $results += about_defined();
     $results += about_undef();
     $results += about_exists();
-    
+
     return ($results) ? bail($results) : $results;
 }
 
