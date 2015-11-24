@@ -2,20 +2,20 @@
 =pod
     Copyright (c) 2012, Salesforce.com, Inc.
     All rights reserved.
-    
+
     Redistribution and use in source and binary forms, with or without modification,
     are permitted provided that the following conditions are met:
-    
+
     Redistributions of source code must retain the above copyright notice, this list
     of conditions and the following disclaimer. Redistributions in binary form must
     reproduce the above copyright notice, this list of conditions and the following
     disclaimer in the documentation and/or other materials provided with the
     distribution.
-    
+
     Neither the name of salesforce.com, inc. nor the names of its contributors may be
     used to endorse or promote products derived from this software without specific
     prior written permission.
-    
+
     THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
     ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
     WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -37,35 +37,35 @@ use Perl::Koans;
 ################
 # your code goes below this line
 
-my $true  = 1; 
-my $false = 0; 
+my $true  = 1;
+my $false = 0;
 
 sub about_true {
     # about_true() -- true is any value except 0 and undef
     my @foo = (1,2,3);
-    
-    ok ('', 'a positive integer is true');
-    ok ('', 'a negative integer is true');
-    ok ('', 'an array in scalar context is true'); # see about_context.pl for more information
-    
+
+    ok ('1', 'a positive integer is true');
+    ok ('-1', 'a negative integer is true');
+    ok (scalar(@foo), 'an array in scalar context is true'); # see about_context.pl for more information
+
     if ($true) {
-        ok (0, '0 is not true');
-        ok (undef, 'undef is not true');
+        ok (!0, '0 is not true');
+        ok (!undef, 'undef is not true');
     }
-    
-    return (Perl::Koans::get_return_code()); 
+
+    return (Perl::Koans::get_return_code());
 }
 
 sub about_false {
     # about_false() -- false is 0 and undef
-    
-    if (__) {
+
+    if ($false) {
         fail('don\'t go here'); # or "don't go here"
     } else {
-        ok (! __, 'undef and 0 are both false');
+        ok (! 0, 'undef and 0 are both false');
     }
-        
-    return (Perl::Koans::get_return_code()); 
+
+    return (Perl::Koans::get_return_code());
 }
 
 # your code goes above this line
@@ -82,7 +82,7 @@ sub run {
     my $results = 0;
     $results += about_true();
     $results += about_false();
-    
+
     return ($results) ? bail($results) : $results;
 }
 
